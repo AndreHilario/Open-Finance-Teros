@@ -73,6 +73,6 @@ export type ListParticipant =
     {
         name: string;
         logoUrl: string;
-        discoveryUrl: string;
+        discoveryUrl: string | null;
     }
 ];
