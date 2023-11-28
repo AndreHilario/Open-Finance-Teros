@@ -14,8 +14,13 @@ async function postParticipantsIntoDB(data: ListParticipant) {
     }
 }
 
+async function getParticipantsFromDB() {
+    return await prisma.partitcipants.findMany();
+}
+
 const participantsRepository = {
-    postParticipantsIntoDB
+    postParticipantsIntoDB,
+    getParticipantsFromDB
 };
 
 export default participantsRepository;

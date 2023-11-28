@@ -6,10 +6,15 @@ async function insertIntoDB(data: ListParticipant) {
     return response;
 }
 
+async function listAllFromDB() {
+    const participants = await participantsRepository.getParticipantsFromDB();
+    return participants;
+}
+
 async function returnCorrectJson(data: Participant) {
     try {
         const formattedData = data.data.map(participant => {
-            // Extrair as informações necessárias de cada Authorization Server
+            
             const authorizationServers = participant.AuthorisationServers.map(server => {
                 return {
                     name: participant.OrganisationName,
@@ -31,7 +36,8 @@ async function returnCorrectJson(data: Participant) {
 
 const participantsService = {
     returnCorrectJson,
-    insertIntoDB
+    insertIntoDB,
+    listAllFromDB
 }
 
 export default participantsService;
