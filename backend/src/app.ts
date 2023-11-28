@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import cors from "cors";
 import { connectDb, disconnectDB, loadEnv } from "./config";
+import { participantsRouter } from "./routers";
 
 loadEnv();
 
@@ -10,6 +11,7 @@ app
     .use(cors())
     .use(express.json())
     .get("/health", (_req, res) => res.send("OK"))
+    .use("/participants", participantsRouter);
 
 export function init(): Promise<Express> {
     connectDb();

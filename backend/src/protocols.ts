@@ -43,31 +43,36 @@ export type OrgDomainRoleClaim = {
 }
 
 export type Participant = {
-    OrganisationId: string;
-    Status: string;
-    OrganisationName: string;
-    CreatedOn: string;
-    LegalEntityName: string;
-    CountryOfRegistration: string;
-    CompanyRegister: string;
-    Tags: string[];
-    Size: null | string;
-    RegistrationNumber: string;
-    RegistrationId: string;
-    RegisteredName: string;
-    AddressLine1: string;
-    AddressLine2: string;
-    City: string;
-    Postcode: string;
-    Country: string;
-    ParentOrganisationReference: string;
-    AuthorisationServers: AuthorizationServer[];
-    OrgDomainClaims: OrgDomainClaim[];
-    OrgDomainRoleClaims: OrgDomainRoleClaim[];
-}
+    data: [{
+        OrganisationId: string;
+        Status: string;
+        OrganisationName: string;
+        CreatedOn: string;
+        LegalEntityName: string;
+        CountryOfRegistration: string;
+        CompanyRegister: string;
+        Tags: string[];
+        Size: null | string;
+        RegistrationNumber: string;
+        RegistrationId: string;
+        RegisteredName: string;
+        AddressLine1: string;
+        AddressLine2: string;
+        City: string;
+        Postcode: string;
+        Country: string;
+        ParentOrganisationReference: string;
+        AuthorisationServers: AuthorizationServer[];
+        OrgDomainClaims: OrgDomainClaim[];
+        OrgDomainRoleClaims: OrgDomainRoleClaim[];
+    }]
+};
 
-export type ListParticipant = {
-    name: string;
-    logoUri: string;
-    openId: string;
-}
+export type ListParticipant = 
+[
+    {
+        name: string;
+        logoUrl: string;
+        discoveryUrl: string;
+    }
+];
