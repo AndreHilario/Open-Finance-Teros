@@ -68,11 +68,8 @@ export type Participant = {
     }]
 };
 
-export type ListParticipant = 
-[
-    {
-        name: string;
-        logoUrl: string;
-        discoveryUrl: string | null;
-    }
-];
+export type ListParticipant = {
+    name: string;
+    logoUrl: string;
+    discoveryUrl: string | null;
+}[];
