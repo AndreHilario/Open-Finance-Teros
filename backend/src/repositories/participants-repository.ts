@@ -4,7 +4,7 @@ import { ListParticipant } from "@/protocols";
 
 async function postParticipantsIntoDB(data: ListParticipant) {
     for (const participants of data) {
-        await prisma.partitcipants.create({
+        await prisma.participants.create({
             data: {
                 name: participants.name,
                 logoUrl: participants.logoUrl,
@@ -15,7 +15,7 @@ async function postParticipantsIntoDB(data: ListParticipant) {
 }
 
 async function getParticipantsFromDB() {
-    return await prisma.partitcipants.findMany();
+    return await prisma.participants.findMany();
 }
 
 const participantsRepository = {
