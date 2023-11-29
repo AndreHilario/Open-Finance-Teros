@@ -31,16 +31,21 @@ export default function ParticipantsList() {
             } catch (error) {
                 alert(error.response.data);
             }
-        }
+        };
+
+        const executeInsertion = async () => {
+            await insertNewParticipants();
+            const interval = setInterval(insertNewParticipants, 3600000);
+            return interval;
+        };
 
         fetchData();
 
-        const interval = setInterval(() => {
-            insertNewParticipants();
-        }, 3600000);
+        const intervalId = executeInsertion();
 
-        return () => clearInterval(interval);
-    }, [setParticipants]);
+        return () => clearInterval(intervalId);
+    }, []);
+
 
     const handleChange = (_pagination, filters, sorter) => {
         setFilteredInfo(filters);
