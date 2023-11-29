@@ -5,11 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon --exec ts-node ./src/server.ts",
-    "build": "tsc -p tsconfig.build.json"
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node ./src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "migration:generate": "npm run dev:load-envs prisma migrate dev",
+    "migration:run": "prisma migrate deploy",
+    "dev:load-envs": "dotenv -e .env.development",
+    "test": "cross-env NODE_ENV=test jest --passWithNoTests --runInBand",
+    "test:migration:run": "npm run test:load-envs prisma migrate deploy",
+    "test:migration:generate": "npm run test:load-envs prisma migrate dev",
+    "test:watch": "jest --watch --passWithNoTests --runInBand",
+    "test:load-envs": "dotenv -e .env.test",
+    "test:coverage": "jest --coverage --runInBand"
   },
   "keywords": [],
-  "author": "",
+  "author": "André Hilário",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.6.0",
