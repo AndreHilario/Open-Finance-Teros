@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Space, Table } from 'antd';
-import useListParticipants from '../../hooks/api/useList';
+import { useEffect, useState } from 'react';
 import { fixColumnsTitle } from '../../helpers/columnsTitles';
-import { StyledTitle, StyledButton } from './styled';
+import useInsertParticipants from '../../hooks/api/useInsert';
+import useListParticipants from '../../hooks/api/useList';
+import { StyledButton, StyledTitle } from './styled';
 
 export default function ParticipantsList() {
 
@@ -11,6 +12,7 @@ export default function ParticipantsList() {
     const [sortedInfo, setSortedInfo] = useState({});
 
     const { listParticipants } = useListParticipants();
+    const { insertParticipants } = useInsertParticipants();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,8 +23,24 @@ export default function ParticipantsList() {
                 alert(error.response.data);
             }
         };
+
+        const insertNewParticipants = async () => {
+            try {
+                await insertParticipants();
+                fetchData();
+            } catch (error) {
+                alert(error.response.data);
+            }
+        }
+
         fetchData();
-    }, [participants, listParticipants]);
+
+        const interval = setInterval(() => {
+            insertNewParticipants();
+        }, 3600000);
+
+        return () => clearInterval(interval);
+    }, [setParticipants]);
 
     const handleChange = (_pagination, filters, sorter) => {
         setFilteredInfo(filters);
@@ -86,6 +104,7 @@ export default function ParticipantsList() {
                 columns={columns}
                 dataSource={participants}
                 onChange={handleChange}
+                rowKey="id"
                 bordered
             />
         </>
