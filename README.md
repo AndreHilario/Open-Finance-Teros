@@ -4,7 +4,7 @@ _This project consists of implementing an Open finance system, which consists of
 <table>
   <tr>
     <td align="center">
-      <img src="./frontend/src/assets/list.png" height="500" />
+      <img src="./frontend/src/assets/list.png" height="400" />
       <br />
       Home page
     </td>
