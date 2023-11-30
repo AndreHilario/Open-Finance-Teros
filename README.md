@@ -11,6 +11,8 @@ _This project consists of implementing an Open finance system, which consists of
   </tr>
 </table>
 
+To test on deploy, go to <a href="https://open-finance-teros.vercel.app/">Open finance</a>
+
 ## Why
 Open Finance, also known as Open Banking, is an initiative by the Central Bank of Brazil aimed at bringing innovation to the financial system, fostering competition, and enhancing the range of products available to consumers.
 
