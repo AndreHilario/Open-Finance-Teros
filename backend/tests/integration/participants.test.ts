@@ -4,6 +4,8 @@ import { cleanDb } from "../helpers";
 import httpStatus from "http-status";
 import { prisma } from "@/config";
 import { insertParticipant } from "../factories/participants-factory";
+import { faker } from "@faker-js/faker";
+import axios from "axios";
 
 beforeAll(async () => {
     await init();
@@ -18,6 +20,19 @@ afterAll(async () => {
 });
 
 const server = supertest(app);
+
+describe("POST /participants/insert", () => {
+    it("should create a participant and return status 201", async () => {
+        const beforeCount = await prisma.participants.count();
+
+        const response = await server.post('/participants/insert');
+
+        const afterCount = await prisma.participants.count();
+
+        expect(response.status).toBe(httpStatus.CREATED);
+        expect(beforeCount).not.toBe(afterCount);
+    });
+});
 
 describe("GET /participants", () => {
     it("should return a array with all participants and correct body with status 200", async () => {
@@ -37,4 +52,3 @@ describe("GET /participants", () => {
         ]);
     });
 });
-

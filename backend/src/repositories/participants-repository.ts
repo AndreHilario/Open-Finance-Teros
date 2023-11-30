@@ -3,15 +3,18 @@ import { ListParticipant } from "@/protocols";
 
 
 async function postParticipantsIntoDB(data: ListParticipant) {
+    const participantsArray = [];
     for (const participants of data) {
-        await prisma.participants.create({
+        const newParticipant = await prisma.participants.create({
             data: {
                 name: participants.name,
                 logoUrl: participants.logoUrl,
                 discoveryUrl: participants.discoveryUrl
             },
         });
+        participantsArray.push(newParticipant);
     }
+    return participantsArray;
 }
 
 async function getParticipantsFromDB() {
