@@ -1,16 +1,16 @@
-import participantsService from '../../src/services/participants-service';
-import participantsRepository from '../../src/repositories/participants-repository';
-import { faker } from '@faker-js/faker';
-import axios from 'axios';
+import participantsService from "../../src/services/participants-service";
+import participantsRepository from "../../src/repositories/participants-repository";
+import { faker } from "@faker-js/faker";
+import axios from "axios";
 
-jest.mock('../../src/repositories/participants-repository');
+jest.mock("../../src/repositories/participants-repository");
 
-describe('insertIntoDB function', () => {
+describe("insertIntoDB function", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should insert new participants when no existing ones are found', async () => {
+  it("should insert new participants when no existing ones are found", async () => {
     (participantsRepository.getParticipantsFromDB as jest.Mock).mockResolvedValue(null);
 
     const data = [
@@ -26,7 +26,7 @@ describe('insertIntoDB function', () => {
     expect(participantsRepository.postParticipantsIntoDB).toHaveBeenCalledWith(data);
   });
 
-  it('should insert only new participants when some already exist', async () => {
+  it("should insert only new participants when some already exist", async () => {
     const existingParticipants = [
       {
         name: faker.internet.userName(),
@@ -51,8 +51,8 @@ describe('insertIntoDB function', () => {
   });
 });
 
-describe('returnCorrectJson function', () => {
-  it('should correctly format participant data', async () => {
+describe("returnCorrectJson function", () => {
+  it("should correctly format participant data", async () => {
     const participantData = await axios.get(`${process.env.OPEN_BANKING}/participants`);
 
     const formattedData = await participantsService.returnCorrectJson(participantData);

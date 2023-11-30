@@ -5,6 +5,6 @@ const participantsRouter = Router();
 
 participantsRouter
     .post("/insert", insertDataIntoDB)
-    .get("", listAllParticipantsFromDB)
+    .get("", listAllParticipantsFromDB);
 
 export { participantsRouter };

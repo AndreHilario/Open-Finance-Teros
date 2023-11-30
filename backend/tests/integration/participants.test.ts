@@ -4,8 +4,6 @@ import { cleanDb } from "../helpers";
 import httpStatus from "http-status";
 import { prisma } from "@/config";
 import { insertParticipant } from "../factories/participants-factory";
-import { faker } from "@faker-js/faker";
-import axios from "axios";
 
 beforeAll(async () => {
     await init();
@@ -25,7 +23,7 @@ describe("POST /participants/insert", () => {
     it("should create a participant and return status 201", async () => {
         const beforeCount = await prisma.participants.count();
 
-        const response = await server.post('/participants/insert');
+        const response = await server.post("/participants/insert");
 
         const afterCount = await prisma.participants.count();
 

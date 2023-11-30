@@ -1,7 +1,6 @@
 import { prisma } from "../config";
 import { ListParticipant } from "@/protocols";
 
-
 async function postParticipantsIntoDB(data: ListParticipant) {
     const participantsArray = [];
     for (const participants of data) {

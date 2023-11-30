@@ -12,7 +12,6 @@ export async function insertDataIntoDB(_req: Request, res: Response) {
     } catch (error) {
         return res.status(httpStatus.BAD_REQUEST).send(error.message);
     }
-    
 }
 
 export async function listAllParticipantsFromDB(_req: Request, res: Response) {

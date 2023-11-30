@@ -17,6 +17,7 @@
     "test:load-envs": "dotenv -e .env.test",
     "test:coverage": "jest --coverage --runInBand",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "lint:staged": "lint-staged"
   },
   "keywords": [],

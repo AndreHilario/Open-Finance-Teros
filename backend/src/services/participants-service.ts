@@ -22,32 +22,27 @@ async function listAllFromDB() {
 }
 
 async function returnCorrectJson(data: Participant) {
-    try {
-        const formattedData = data.data.map(participant => {
-
-            const authorizationServers = participant.AuthorisationServers.map(server => {
-                return {
-                    name: participant.OrganisationName,
-                    logoUrl: server.CustomerFriendlyLogoUri,
-                    discoveryUrl: server.OpenIDDiscoveryDocument,
-                };
-            });
-
-            return authorizationServers;
+    const formattedData = data.data.map(participant => {
+        const authorizationServers = participant.AuthorisationServers.map(server => {
+            return {
+                name: participant.OrganisationName,
+                logoUrl: server.CustomerFriendlyLogoUri,
+                discoveryUrl: server.OpenIDDiscoveryDocument,
+            };
         });
 
-        const flattenedData = formattedData.flat();
+        return authorizationServers;
+    });
 
-        return flattenedData;
-    } catch (error) {
-        throw error;
-    }
+    const flattenedData = formattedData.flat();
+
+    return flattenedData;
 }
 
 const participantsService = {
     returnCorrectJson,
     insertIntoDB,
     listAllFromDB
-}
+};
 
 export default participantsService;

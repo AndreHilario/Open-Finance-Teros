@@ -20,8 +20,8 @@ export type AuthorizationServer = {
     DeprecatedDate: null | string;
     RetirementDate: null | string;
     SupersededByAuthorisationServerId: null | string;
-    ApiResources: any[];
-    AuthorisationServerCertifications: any[];
+    ApiResources: Array<string>;
+    AuthorisationServerCertifications: Array<string>;
 }
 
 export type OrgDomainClaim = {
@@ -36,10 +36,10 @@ export type OrgDomainRoleClaim = {
     AuthorisationDomain: string;
     Role: string;
     RegistrationId: string;
-    Authorisations: any[];
+    Authorisations: Array<string>;
     RoleType: string;
     Exclusive: boolean;
-    Metadata: any[];
+    Metadata: Array<string>;
 }
 
 export type Participant = {
