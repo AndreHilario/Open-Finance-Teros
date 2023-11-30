@@ -1,5 +1,5 @@
-import useAsync from '../useAsync';
-import * as api from '../../services/participants/insertApi';
+import useAsync from "../useAsync";
+import * as api from "../../services/participants/insertApi";
 
 export default function useInsertParticipants() {
   const {

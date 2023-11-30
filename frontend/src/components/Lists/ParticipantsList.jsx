@@ -1,9 +1,9 @@
-import { Space, Table } from 'antd';
-import { useEffect, useState } from 'react';
-import { fixColumnsTitle } from '../../helpers/columnsTitles';
-import useInsertParticipants from '../../hooks/api/useInsert';
-import useListParticipants from '../../hooks/api/useList';
-import { StyledButton, StyledTitle } from './styled';
+import { Space, Table } from "antd";
+import { useEffect, useState } from "react";
+import { fixColumnsTitle } from "../../helpers/columnsTitles";
+import useInsertParticipants from "../../hooks/api/useInsert";
+import useListParticipants from "../../hooks/api/useList";
+import { StyledButton, StyledTitle } from "./styled";
 
 export default function ParticipantsList() {
 
@@ -63,7 +63,7 @@ export default function ParticipantsList() {
 
     const columns = participants.length > 0
         ? Object.keys(participants[0])
-            .filter(key => key !== 'id' && key !== 'createdAt' && key !== 'updatedAt')
+            .filter(key => key !== "id" && key !== "createdAt" && key !== "updatedAt")
             .map(key => {
                 const columnConfig = {
                     title: (
@@ -80,7 +80,7 @@ export default function ParticipantsList() {
                     ellipsis: true,
                 };
 
-                if (key === 'name') {
+                if (key === "name") {
                     columnConfig.filters = [...new Set(participants.map(item => item[key]))].map(value => ({
                         text: value,
                         value: value,

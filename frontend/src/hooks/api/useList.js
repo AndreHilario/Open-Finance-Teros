@@ -1,5 +1,5 @@
-import useAsync from '../useAsync';
-import * as api from '../../services/participants/listApi';
+import useAsync from "../useAsync";
+import * as api from "../../services/participants/listApi";
 
 export default function useListParticipants() {
   const {

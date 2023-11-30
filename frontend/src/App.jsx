@@ -2,8 +2,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-} from 'react-router-dom';
-import Home from './pages/home';
+} from "react-router-dom";
+import Home from "./pages/home";
 
 function App() {
 
