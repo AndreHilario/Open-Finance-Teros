@@ -1,7 +1,7 @@
 services:
-  postgres_sql:
+  localhost:
     image: postgres
-    container_name: postgres_sql
+    container_name: localhost
     restart: always
     ports:
       - 5433:5432
@@ -18,7 +18,7 @@ services:
     ports:
       - 4001:4000
     depends_on:
-      - postgres_sql
+      - localhost
     env_file:
       - ./backend/.env.development
     networks:
