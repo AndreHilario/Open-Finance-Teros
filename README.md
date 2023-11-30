@@ -177,9 +177,11 @@ npm run lint:fix
 
 ### Building the image and running:
 
-2. Everything through the `docker-compose` file, and for this, it is necessary that the `.env.development` file is configured as specified in `.env.example` file and if the mapped ports are available.
+2. Everything through the `docker-compose` file, and for this, it is necessary that the `.env.development` file on back-end and the `.env` file on front-end are configured as specified in `.env.example` file and if the mapped ports are available.
 
-3. Run the `docker-compose` file on the main repository file:
+3. You must also have a server with a database running, as specified in the `.env.example` file.
+
+4. Run the `docker-compose` file on the main repository file:
 ```bash
 # With logs
 docker compose up
@@ -188,4 +190,4 @@ docker compose up
 docker compose up -d
 ```
 
-4. The application will be accessible at `http://localhost:8080` in your browser, as per the port mapped in the YAML file.
+5. The application will be accessible at `http://localhost:8080` in your browser, as per the port mapped in the YAML file.
